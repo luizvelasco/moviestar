@@ -42,7 +42,7 @@ if ($type === "register") {
                 $user->lastname = $lastname;
                 $user->email = $email;
                 $user->password = $finalPassword;
-                $user->name = $userToken;
+                $user->token = $userToken;
 
                 $auth = true;
 
