@@ -47,24 +47,31 @@ if ($type === "update") {
             //Checar se é jpg
             if (in_array($image["type"], $jpgArray)){
 
+                $imageName = $user->imageGenerateName();
+
                 $imageFile = imagecreatefromjpeg($image["tmp_name"]);
+
+                imagejpeg($imageFile, "./img/users/" . $imageName, 100);
+
 
             //imagem é png
             } else {
 
+                $imageName = $user->imageGenerateName();
+
                 $imageFile = imagecreatefrompng($image["tmp_name"]);
 
+                imagepng($imageFile, "./img/users/" . $imageName, 100);
+
+
             }
-
-            $imageName = $user->imageGenerateName();
-
-            imagepng($imageFile, "./img/users/" . $imageName, 100);
 
             $userData->image = $imageName;
 
 
         } else {
             $message->setMessage("Tipo inválido de image, insira png ou jpg!", "error", "back");
+            exit;
         }
 
     }
