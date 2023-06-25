@@ -34,8 +34,8 @@ if ($type === "create") {
         $movie->title = $title;
         $movie->description = $description;
         $movie->trailer = $trailer;
-        $movie->category = $title;
-        $movie->length = $title;
+        $movie->category = $category;
+        $movie->length = $length;
         $movie->users_id = $userData->id;
 
         // Upload de imagem do filme
