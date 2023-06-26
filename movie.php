@@ -37,9 +37,30 @@
         if ($userData->id === $movie->users_id) {
             $userOwnsMovie = true;
         }
-        
+
     }
 
     // Resgatar as reviews do filme
 
     ?>
+
+    <div id="main-container" class="container-fluid">
+        <div class="row">
+            <div class="offset-md-1 col-md-6 movie-container">
+                <h1 class="page-title"><?= $movie->title?></h1>
+                <p class="movie-details">
+                    <span>Duração: <?= $movie->length?></span>
+                    <span class="pipe"></span>
+                    <span><?= $movie->category?></span>
+                    <span class="pipe"></span>
+                    <span><i class="fas fa-star"></i> 9</span>
+                </p>
+                
+            </div>
+        </div>
+    </div>
+
+
+<?php
+    require_once("templates/footer.php");
+?>
