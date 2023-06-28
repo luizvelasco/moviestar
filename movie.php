@@ -49,7 +49,6 @@
     $alreadReviewed = false;
 
     ?>
-
     <div id="main-container" class="container-fluid">
         <div class="row">
             <div class="offset-md-1 col-md-6 movie-container">

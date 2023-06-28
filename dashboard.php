@@ -42,7 +42,7 @@
                             <a href="<?= $BASE_URL?>editmovie.php?id=<?=$movie->id ?>" class="edit-btn">
                                 <i class="far fa-edit"></i> Editar
                             </a>
-                            <form action="<?= $BASE_URL?>movie_process.php?id=<?=$movie->id ?>" method="post">
+                            <form action="<?= $BASE_URL?>movie_process.php?id=<?=$movie->id ?>" method="post" onsubmit="return confirm('Deseja apagar o filme?');">
                                 <input type="hidden" name="type" value="delete">
                                 <input type="hidden" name="id" value="<?=$movie->id ?>">
                                 <button type="submit" class="delete-btn">
