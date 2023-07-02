@@ -62,9 +62,18 @@ class ReviewDAO implements ReviewDAOInterface{
 
             $reviewsData = $stmt->fetchAll();
 
+            $userDao = new UserDAO($this->conn, $this->url);
+
             foreach ($reviewsData as $review) {
 
-                $reviews[] = $this->buildReview($review);
+                $reviewObject = $this->buildReview($review);
+
+                // Chamar os dados do usuário
+                $user = $userDao->findById($reviewObject->users_id);
+
+                $reviewObject->user = $user;
+
+                $reviews[] = $reviewObject;
 
             }
 
@@ -74,7 +83,20 @@ class ReviewDAO implements ReviewDAOInterface{
         
     }
     public function hasAlreadyReviewd($id, $userId){
-        
+
+        $stmt = $this->conn->prepare("SELECT * FROM reviews WHERE movies_id = :movies_id AND users_id = :users_id");
+
+        $stmt->bindParam(":movies_id", $id);
+        $stmt->bindParam(":users_id", $userId);
+
+        $stmt->execute();
+
+        if ($stmt->rowCount() > 0) {
+            return true;
+        } else {
+            return false;
+        }
+
     }
     public function getRatings($id) {
 

@@ -177,6 +177,31 @@ class UserDAO implements USerDAOInterface{
 
     public function findById ($id) {
 
+        //Verifica se foi passado algo no id
+        if ($id != "") {
+            $stmt = $this->conn->prepare("SELECT * FROM users WHERE id = :id");
+
+            $stmt->bindParam(":id", $id);
+
+            $stmt->execute();
+
+            //Testa se retornou registros
+            if ($stmt->rowCount() > 0) {
+
+                //Fetch() só pega um usuário
+                $data = $stmt->fetch();
+                //Retorna o objeto montado do usuário
+                $user = $this->buildUser($data);
+                return $user;
+
+            } else {
+                return false;
+            }
+
+        } else {
+            return false;
+        }
+
     }
 
     public function findByToken ($token) {
