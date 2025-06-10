@@ -33,6 +33,7 @@
     } catch (PDOException $e) {
         // error_log("Erro na conexão com o banco: " . $e->getMessage());
         // exit("Erro de conexão com o banco de dados.");
+        
         // TEMPORÁRIO — Apenas para debug local
         die("Erro na conexão com o banco: " . $e->getMessage());
     }
