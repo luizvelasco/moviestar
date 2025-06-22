@@ -111,7 +111,7 @@
             $_SESSION["token"] = $token;
             if($redirect) {
                 // redireciona para o perfl do usuário
-                $this->message->setMessage("Seja bem vindo!", "sucess", "editprofile.php");
+                $this->message->setMessage("Seja bem vindo!", "success", "editprofile.php");
             }
 
         }
