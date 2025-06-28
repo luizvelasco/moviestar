@@ -77,7 +77,7 @@
 
              if($redirect) {
                 // redireciona para o perfl do usuário
-                $this->message->setMessage("Dados atualizados com sucesso", "sucess", "editprofile.php");
+                $this->message->setMessage("Dados atualizados com sucesso", "success", "editprofile.php");
             }
 
 
