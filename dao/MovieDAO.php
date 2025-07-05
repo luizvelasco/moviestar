@@ -24,18 +24,34 @@
             $movie->id = $data["id"];
             $movie->title = $data["title"];
             $movie->description = $data["description"];
-            $movie->image = $data["email"];
+            $movie->image = $data["image"];
             $movie->trailer = $data["trailer"];
             $movie->category = $data["category"];
             $movie->length = $data["length"];
             $movie->users_id = $data["users_id"];
             
+            return $movie;
         }
 
         public function findAll() {
             
         }
         public function getLatestMovies() {
+
+            $movies = [];
+
+            $stmt = $this->conn->query("SELECT * FROM movies ORDER BY id DESC");
+
+            if($stmt->rowCount() > 0) {
+
+                $moviesArray = $stmt->fetchAll();
+
+                foreach ($moviesArray as $movie) {
+                    $movies[] = $this->buildMovie($movie);
+                }
+            }
+
+            return $movies;
             
         }
         public function getMoviesByCategory($category) {
